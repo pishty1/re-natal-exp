@@ -8,7 +8,8 @@
     "prod": "env/prod"
   },
   "modules": [
-    "react-native-maps"
+    "react-native-maps",
+    "react-native-material-design"
   ],
   "imageDirs": [
     "images"

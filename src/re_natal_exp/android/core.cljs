@@ -19,21 +19,23 @@
 (defn alert [title]
   (.alert (.-Alert ReactNative) title))
 
+(def map-style 
+  {:height 400
+   :width 400
+   :justifyContent "flex-end"
+   :alignItems "center"})
+
+(def map-co
+  {:latitude 37.78825
+   :longitude -122.4324
+   :latitudeDelta 0.0922
+   :longitudeDelta 0.0421})
+
 (defn app-root []
   (let [greeting (subscribe [:get-greeting])]
     (fn []
-      [map-view
-       {:initial-region
-        {:latitude 37.78825
-         :longitude -122.4324
-         :latitudeDelta 0.0922
-         :longitudeDelta 0.0421}
-        :style 
-        {:height 400
-         :width 400
-         :justifyContent "flex-end"
-         :alignItems "center"}}]     
-      )))
+      [map-view {:initial-region map-co
+                 :style map-style}])))
 
 (defn init []
   (dispatch-sync [:initialize-db])
