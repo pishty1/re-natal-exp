@@ -2,7 +2,8 @@
   (:require [reagent.core :as r :refer [atom]]
             [re-frame.core :refer [subscribe dispatch dispatch-sync]]
             [re-natal-exp.handlers]
-            [re-natal-exp.subs]))
+            [re-natal-exp.subs]
+            [re-natal-exp.shared.main :as main]))
 
 (set! js/window.React (js/require "react"))
 (def ReactNative (js/require "react-native"))
@@ -19,7 +20,7 @@
 (defn alert [title]
   (.alert (.-Alert ReactNative) title))
 
-(def map-style 
+(def map-style
   {:height 400
    :width 400
    :justifyContent "flex-end"
@@ -33,9 +34,7 @@
 
 (defn app-root []
   (let [greeting (subscribe [:get-greeting])]
-    (fn []
-      [map-view {:initial-region map-co
-                 :style map-style}])))
+    (main/main-comp)))
 
 (defn init []
   (dispatch-sync [:initialize-db])
