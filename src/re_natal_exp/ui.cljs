@@ -3,6 +3,7 @@
 
 
 (def ReactNative (js/require "react-native"))
+(def material-ui (js/require "react-native-material-design"))
 (def maps (js/require "react-native-maps"))
 (def map-view (r/adapt-react-class maps))
 (def app-registry (.-AppRegistry ReactNative))
@@ -21,6 +22,6 @@
 
 (def map-co
   {:latitude 51.78825
-   :longitude 1.9324
+   :longitude 12.9324
    :latitudeDelta 6.0922
    :longitudeDelta 6.0421})

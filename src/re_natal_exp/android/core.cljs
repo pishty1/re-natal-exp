@@ -1,8 +1,8 @@
 (ns re-natal-exp.android.core
   (:require [reagent.core :as r :refer [atom]]
-            [re-frame.core :refer [subscribe dispatch dispatch-sync]]
-            [re-natal-exp.handlers]
-            [re-natal-exp.subs]
+            ;[re-frame.core :refer [subscribe dispatch dispatch-sync]]
+            ;[re-natal-exp.handlers]
+            ;[re-natal-exp.subs]
             [re-natal-exp.shared.main :as main]))
 
 (set! js/window.React (js/require "react"))
@@ -20,22 +20,10 @@
 (defn alert [title]
   (.alert (.-Alert ReactNative) title))
 
-(def map-style
-  {:height 400
-   :width 400
-   :justifyContent "flex-end"
-   :alignItems "center"})
-
-(def map-co
-  {:latitude 37.78825
-   :longitude -122.4324
-   :latitudeDelta 0.0922
-   :longitudeDelta 0.0421})
-
 (defn app-root []
-  (let [greeting (subscribe [:get-greeting])]
+  (let [];;greeting (subscribe [:get-greeting])
     (main/main-comp)))
 
 (defn init []
-  (dispatch-sync [:initialize-db])
+  ;(dispatch-sync [:initialize-db])
   (.registerComponent app-registry "ReNatalExp" #(r/reactify-component app-root)))

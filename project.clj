@@ -5,14 +5,16 @@
                       :url  "http://www.eclipse.org/legal/epl-v10.html"}
             :dependencies [[org.clojure/clojure "1.9.0-alpha10"]
                            [org.clojure/clojurescript "1.9.198"]
-                           [reagent "0.5.1" :exclusions [cljsjs/react]]
-[re-frame "0.6.0"]]
+                           [reagent "0.6.0" :exclusions [cljsjs/react]]
+                           [cljsjs/react-dom "15.4.0-0"]
+                           [cljsjs/react-dom-server "15.4.0-0"]]
+                           ;[re-frame "0.9.1"]]
             :plugins [[lein-cljsbuild "1.1.4"]
                       [lein-figwheel "0.5.8"]]
             :clean-targets ["target/" "index.ios.js" "index.android.js"]
             :aliases {"prod-build" ^{:doc "Recompile code with prod profile."}
                                    ["do" "clean"
-                                    ["with-profile" "prod" "cljsbuild" "once" ]]}
+                                    ["with-profile" "prod" "cljsbuild" "once"]]}
             :profiles {:dev {:dependencies [[figwheel-sidecar "0.5.8"]
                                             [com.cemerick/piggieback "0.2.1"]]
                              :source-paths ["src" "env/dev"]
